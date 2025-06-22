@@ -1,16 +1,21 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { createEnv } from "@t3-oss/env-core";
 import { z } from "zod";
 
 export const env = createEnv({
   server: {
-    // DATABASE_URL: z.string().url(),
-    // OPEN_AI_API_KEY: z.string().min(1),
+    DATABASE_URL: z.string().url(),
+    FRONTEND_URL: z.string().url(),
+    SHADOW_DATABASE_URL: z.string().url(),
     PORT: z
       .string()
       .transform(Number)
-      .refine((val) => !isNaN(val) && val > 0 && val < 65566, {
-        message: "PORT must be a valid number between 1 and 65535",
+      .refine((val) => !isNaN(val) && val > 0 && val < 65536, {
+        message: "PORT must be a valid number between 1 and 65536",
       }),
+    JWT_SECRET: z.string(),
+    NODE_ENV: z.string(),
   },
 
   /**

@@ -1,0 +1,156 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../backend/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+  shadowDatabaseUrl = env("SHADOW_DATABASE_URL")
+}
+
+model User {
+  user_id Int @id @default(autoincrement())
+  username String @unique
+  password String 
+  email String @unique
+  phone String? @unique
+  role Role 
+  status Status @default(active)
+  last_login DateTime? 
+  createdAt DateTime @default(now())
+
+  personal_details   PersonalDetail?
+  qualifications     Qualification[]
+  salary_master      SalaryMaster[]
+  documents          Document[]
+  project_assignments ProjectAssignment[]
+}
+
+model PersonalDetail {
+  personal_id              Int      @id @default(autoincrement())
+  user_id                  Int      @unique
+  full_name                String
+  father_name              String?
+  gender                   Gender?
+  date_of_birth            DateTime?
+  marital_status           MaritalStatus?
+  address_line1            String?
+  address_line2            String?
+  city                     String?
+  state                    String?
+  pincode                  String?
+  country                  String? @default("India")
+  emergency_contact_name   String?
+  emergency_contact_number String?
+
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}
+
+model Qualification {
+  qualification_id Int     @id @default(autoincrement())
+  user_id          Int
+  degree_level     DegreeLevel
+  degree_name      String?
+  institution_name String?
+  specialization   String?
+  start_year       Int?
+  end_year         Int?
+  grade            String?
+  document_url     String?
+
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}
+
+model SalaryMaster {
+  salary_id     Int     @id @default(autoincrement())
+  user_id       Int
+  basic_pay     Decimal @db.Decimal(10, 2)
+  hra           Decimal? @db.Decimal(10, 2)
+  bonus         Decimal? @db.Decimal(10, 2)
+  incentives    Decimal? @db.Decimal(10, 2)
+  deductions    Decimal? @db.Decimal(10, 2)
+  gross_salary  Decimal? @db.Decimal(10, 2)
+  net_salary    Decimal? @db.Decimal(10, 2)
+  currency      String   @default("INR")
+  effective_from DateTime?
+  remarks       String?
+
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}
+
+model Document {
+  document_id   Int      @id @default(autoincrement())
+  user_id       Int
+  document_type DocumentType
+  document_name String?
+  document_url  String
+  verified      Boolean  @default(false)
+  uploaded_at   DateTime @default(now())
+
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+}
+
+model ProjectAssignment {
+  assignment_id      Int     @id @default(autoincrement())
+  user_id            Int
+  project_id         Int
+  assigned_role      String?
+  start_date         DateTime?
+  end_date           DateTime?
+  allocation_percent Decimal? @db.Decimal(5, 2)
+
+  user User @relation(fields: [user_id], references: [user_id], onDelete: Cascade)
+
+  // You can define a relation to Project model when it's ready
+  // project Project @relation(fields: [project_id], references: [project_id])
+}
+
+// Enum
+enum Role {
+  admin
+  manager
+  employee
+}
+
+enum Status {
+  active
+  manager
+  employee
+}
+
+
+enum Gender {
+  male
+  female
+  other
+}
+
+enum MaritalStatus {
+  single
+  married
+  divorced
+  widowed
+}
+
+enum DegreeLevel {
+  Diploma
+  Bachelor
+  Master
+  PhD
+  Other
+}
+
+enum DocumentType {
+  Resume
+  Aadhar
+  PAN
+  Degree
+  Other
+}

@@ -4,4 +4,4 @@
 2. Install deps: npm install
 3. Set up .env (copy env.example)
 4. Run DB
-5. Run server: 'npm run server'
+5. Run server: 'npm run backend'
