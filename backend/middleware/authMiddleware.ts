@@ -40,3 +40,27 @@ export const protect = asyncHandler(async (req, res, next) => {
     throw new Error("Not authorized, token failed");
   }
 });
+
+export const restrictTo = (...roles: string[]) => {
+  return (req: Request, res: Response, next: NextFunction) => {
+    const role = req.user?.role;
+    console.log(req.user);
+    console.log(role);
+
+    if (!role) {
+      res.status(404).json({
+        message: "User role not found",
+      });
+      throw new Error("User role not found");
+    }
+
+    if (!roles.includes(role)) {
+      res.status(403).json({
+        message: "Forbidden, insufficient rights",
+      });
+      throw new Error("Forbidden, insufficient rights");
+    }
+
+    next();
+  };
+};
