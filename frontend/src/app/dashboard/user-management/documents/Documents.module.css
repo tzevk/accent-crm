@@ -1,0 +1,118 @@
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .headerArea {
+    flex: none;
+  }
+  
+  /* Progress bar at 100% */
+  .progress {
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .progress__fill {
+    height: 100%;
+    width: 100%;
+    background: #64126d;
+    transition: width 0.3s;
+  }
+  
+  /* Title */
+  .title {
+    font-size: 1.75rem;
+    margin-bottom: 16px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  /* Scrollable form area */
+  .formWrapper {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 8px;
+    margin-top: 16px;
+  }
+  .formWrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+  .formWrapper::-webkit-scrollbar-thumb {
+    background: rgba(100,18,109,0.4);
+    border-radius: 3px;
+  }
+  
+  /* Form fields */
+  .formGroup {
+    margin-bottom: 20px;
+  }
+  .label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+  }
+  .select,
+  .input,
+  .url {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .select:focus,
+  .input:focus,
+  .url:focus {
+    outline: none;
+    border-color: #64126d;
+    box-shadow: 0 0 0 3px rgba(100,18,109,0.1);
+  }
+  
+  /* Checkbox wrapper */
+  .checkboxGroup {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  .checkboxGroup input {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+  }
+  
+  /* Error text */
+  .error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+  
+  /* Submit button */
+  .button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #64126d;
+    color: #fff;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+  }
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .button:hover:not(:disabled) {
+    background: #520a5c;
+  }

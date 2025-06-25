@@ -1,0 +1,80 @@
+/* src/app/dashboard/lead-management/enquiries/follow-ups/FollowUps.module.css */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh; 
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+  .title {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  
+  /* Form */
+  .formWrapper {
+    margin-bottom: 24px;
+  }
+  .form {
+    display: grid;
+    grid-template-columns: 1fr 1fr 2fr auto;
+    gap: 12px;
+  }
+  .form select,
+  .form input,
+  .form textarea {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+  }
+  .form button {
+    padding: 10px 16px;
+    background: #64126d;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+  }
+  .form button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  /* Timeline */
+  .timeline {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+  }
+  .entry {
+    display: flex;
+    margin-bottom: 24px;
+  }
+  .marker {
+    width: 12px;
+    height: 12px;
+    background: #64126d;
+    border-radius: 50%;
+    margin-right: 16px;
+    margin-top: 6px;
+  }
+  .content {
+    background: #fff;
+    padding: 12px 16px;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .meta {
+    font-size: 0.875rem;
+    color: #666;
+    margin-bottom: 6px;
+  }

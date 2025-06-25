@@ -1,0 +1,456 @@
+/* Root container */
+.dashboard-container {
+    display: flex;
+    min-height: 100vh;
+    background: #f2f2f7;
+  }
+  
+/* Container */
+.sidebar {
+  width: 260px;
+  background: #fff;
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  position: sticky;
+  top: 0;
+  align-items: center; 
+  height: 100vh;
+  z-index: 800;
+}
+
+
+/* Base list reset */
+.sidebar__list,
+.sidebar__sublist,
+.sidebar__sublist--nested {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* List items */
+.sidebar__item {
+  margin: 0;
+}
+
+/* Links and toggles (uniform for all levels) */
+.sidebar__link,
+.sidebar__sublink,
+.sidebar__toggle {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  color: #000000;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+  cursor: pointer;
+}
+
+/* Icon and text helpers */
+.sidebar__icon {
+  margin-right: 12px;
+  display: inline-flex;
+}
+.sidebar__text {
+  flex: 1;
+  text-align: left;
+}
+.sidebar__chevron {
+  margin-left: 8px;
+  transition: transform 0.2s;
+}
+/* ── Branding (logo + text) at top of sidebar ── */
+.sidebar__branding {
+  display: flex;
+  align-items: center;
+  padding: 34px 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.sidebar__branding-img {
+  width: 150px;
+  height: 120px;
+  object-fit: cover;
+  margin-right: 2px;
+}
+
+/* Hover state */
+.sidebar__link:hover,
+.sidebar__sublink:hover,
+.sidebar__toggle:hover {
+  background: #fbe8f1;
+  color: #64126d;
+}
+
+/* Active/toggled state */
+.sidebar__link.active,
+.sidebar__sublink.active,
+.sidebar__toggle.open {
+  background: #64126d;
+  color: #ffffff;
+}
+
+/* Rotate chevron when open */
+.sidebar__toggle.open .sidebar__chevron {
+  transform: rotate(180deg);
+}
+
+/* First-level submenu under User Management */
+.sidebar__sublist {
+  padding-left: 8px;
+  border-left: 2px solid #f2f2f7;
+  margin-top: 4px;
+}
+
+/* Nested submenu under Create User */
+.sidebar__sublist--nested {
+  padding-left: 24px;
+  border-left: 2px solid #fde8f1;
+  margin-top: 2px;
+}
+
+/* Slightly smaller font for nested items */
+.sidebar__sublist--nested .sidebar__sublink {
+  font-size: 0.95rem;
+  padding: 8px 16px;
+}
+
+  /* Main area */
+  .main-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  /* Header */
+  .header {
+    position: sticky;
+    background: #fff;
+    padding: 16px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+  }
+  .header h1 {
+    margin: 0;
+    font-size: 1.75rem;
+    color: #333;
+  }
+  .header .actions button {
+    background: none;
+    border: none;
+    font-size: 1.25rem;
+    margin-right: 16px;
+    cursor: pointer;
+  }
+  .header .actions .avatar {
+    width: 40px;
+    height: 40px;
+    background: #ddd;
+    border-radius: 50%;
+  }
+  
+  /* Content */
+  .content {
+    padding: 32px;
+    overflow-y: auto;
+  }
+  
+  /* Cards grid */
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 24px;
+  }
+  .card {
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  }
+  .card .label {
+    font-size: 0.875rem;
+    color: #666;
+  }
+  .card .value {
+    margin-top: 8px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #222;
+  }
+
+/* Submenu toggle button */
+.submenu-toggle {
+  display: block;
+  width: 100%;
+  padding: 12px 20px;
+  background: none;
+  border: none;
+  text-align: left;
+  font-weight: 500;
+  color: #4a4a4a;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.submenu-toggle:hover {
+  background: #fbe8f1;
+}
+.submenu-toggle.open {
+  background: #64126d;
+  color: #fff;
+}
+
+/* Submenu list */
+.submenu {
+  list-style: none;
+  padding-left: 16px;
+  margin: 4px 0 8px;
+}
+.submenu li a {
+  display: block;
+  padding: 8px 20px;
+  font-size: 0.9rem;
+  color: #4a4a4a;
+  border-radius: 6px;
+  transition: background 0.2s, color 0.2s;
+}
+.submenu li a:hover {
+  background: #fbe8f1;
+  color: #64126d;
+}
+.submenu li a.active {
+  background: #64126d;
+  color: #fff;
+  font-weight: 600;
+}
+
+  /* === Header === */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #fff;
+  padding: 12px 32px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* Left: logo + title */
+.header__left {
+  display: flex;
+  align-items: center;
+}
+.header__logo {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+  margin-right: 10px;
+}
+.header__title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #333;
+}
+
+/* Center: search input */
+.header__center {
+  flex: 1;
+  max-width: 400px;
+  margin: 0 24px;
+}
+.header__search {
+  width: 100%;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: border-color 0.2s;
+}
+.header__search:focus {
+  outline: none;
+  border-color: #64126d;
+}
+
+/* Actions: bell + avatar */
+.header__actions {
+  display: flex;
+  align-items: center;
+}
+
+/* Icon button with badge */
+.header__icon-btn {
+  position: relative;
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  margin-right: 20px;
+  cursor: pointer;
+}
+.header__badge {
+  position: absolute;
+  top: -4px;
+  right: -6px;
+  background: #e02424;
+  color: #fff;
+  font-size: 0.65rem;
+  padding: 2px 5px;
+  border-radius: 8px;
+}
+
+/* Avatar + dropdown */
+.header__avatar-wrapper {
+  position: relative;
+  cursor: pointer;
+}
+.header__avatar {
+  width: 30px;
+  height: 30px;
+  background: #bbb;
+  border-radius: 50%;
+  transition: transform 0.2s;
+}
+.header__avatar-wrapper:hover .header__avatar {
+  transform: scale(1.05);
+}
+
+/* Dropdown menu */
+.header__dropdown {
+  position: absolute;
+  right: 0;
+  top: 48px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  list-style: none;
+  margin: 0;
+  padding: 8px 0;
+  min-width: 140px;
+}
+.header__dropdown li {
+  margin: 0;
+}
+
+/* give some indent/spacing for nested project items */
+.sidebar__sublist {
+  list-style: none;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+.sidebar__sublink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 6px 8px;
+  text-decoration: none;
+  border-radius: 4px;
+}
+.sidebar__sublink.active,
+.sidebar__sublink:hover {
+  background: rgba(100,18,109,0.1);
+}
+
+/* smaller chevron indent on nested toggles */
+.sidebar__chevron {
+  margin-left: auto;
+  transition: transform 0.2s;
+}
+.sidebar__toggle.open > .sidebar__chevron {
+  transform: rotate(180deg);
+}
+.header__dropdown li a {
+  display: block;
+  padding: 10px 16px;
+  color: #333;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+.header__dropdown li a:hover {
+  background: #f5f5f5;
+}
+
+/* 2. Hamburger button (hidden on desktop) */
+.header__hamburger {
+  display: flex;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  margin-right: 12px;
+  cursor: pointer;
+}
+
+/* 3. Responsive tweaks */
+@media (max-width: 768px) {
+  /* Stack sidebar & main vertically */
+  .dashboard-container {
+    flex-direction: column;
+  }
+
+  /* Sidebar becomes overlay */
+  .sidebar {
+    position: sticky; 
+    top: 0;
+    left: -260px;
+    height: 100%;
+    width: 240px;
+    z-index: 50;
+    transition: left 0.25s ease;
+  }
+  .sidebar--open {
+    left: 0;
+  }
+
+  /* When sidebar is open, main-area is dimmed */
+  .main-area {
+    position: relative;
+  }
+  .main-area::before {
+    content: '';
+    display: none;
+    position: fixed;
+    inset: 0;
+    flex-direction: column;
+    overflow-y: auto;
+    background: rgba(0,0,0,0.3);
+    z-index: 40;
+  }
+  .sidebar--open + .main-area::before {
+    display: block;
+  }
+
+  /* Header: show hamburger, simplify layout */
+  .header {
+    padding: 12px;
+  }
+  .header__hamburger {
+    display: block;
+  }
+  .header__center {
+    display: none; /* hide search on small screens (or you can make it a full-width below) */
+  }
+
+  /* Make content padding smaller */
+  .content {
+    padding: 16px;
+  }
+
+  /* Cards: single-column stack */
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,135 @@
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    height: 100vh; 
+    background: #fff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  }
+  
+/* wrap the entire form in a scrollable container */
+.formWrapper {
+    /* adjust 200px to match your header+breadcrumb+progress total height */
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+    padding-right: 8px; /* ensure content isn’t hidden under scrollbar */
+  }
+  
+  /* light custom scrollbar */
+  .formWrapper::-webkit-scrollbar {
+    width: 6px;
+  }
+  .formWrapper::-webkit-scrollbar-thumb {
+    background: rgba(100, 18, 109, 0.4);
+    border-radius: 3px;
+  }
+
+.title {
+    font-size: 1.75rem;
+    margin-bottom: 8px;
+    color: #333;
+    font-weight: 700;
+  }
+  
+  /* Progress bar under breadcrumb */
+  .progress {
+    height: 4px;
+    background: #eee;
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 24px;
+  }
+  .progress__fill {
+    height: 100%;
+    width: 25%;               /* step1 of 4 → 25% */
+    background: #64126d;
+    transition: width 0.3s;
+  }
+  
+  /* Form styling */
+  .formGroup {
+    position: relative;
+    margin-bottom: 20px;
+  }
+  .label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 600;
+    color: #444;
+  }
+  
+  /* Input with icon */
+  .inputWrapper {
+    position: relative;
+  }
+  .inputIcon {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+    transform: translateY(-50%);
+    color: #999;
+  }
+  .input,
+  .select {
+    width: 100%;
+    padding: 10px 12px 10px 36px; /* left padding for icon */
+    border: 1.5px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+  }
+  .input:focus,
+  .select:focus {
+    outline: none;
+    border-color: #64126d;
+    box-shadow: 0 0 0 3px rgba(100,18,109,0.1);
+  }
+  
+  /* Valid & invalid states */
+  .input.valid {
+    border-color: #28a745;
+  }
+  .input.invalid {
+    border-color: #dc3545;
+  }
+  
+  /* Password toggle button */
+  .toggleBtn {
+    position: absolute;
+    top: 50%;
+    right: 12px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #666;
+  }
+  
+  /* Error text */
+  .error {
+    color: #dc3545;
+    font-size: 0.875rem;
+    margin-top: 4px;
+  }
+  
+  /* Submit button */
+  .button {
+    display: inline-block;
+    padding: 14px 28px;
+    background: #64126d;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.2s, opacity 0.2s;
+  }
+  .button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  .button:hover:not(:disabled) {
+    background: #520a5c;
+  }
