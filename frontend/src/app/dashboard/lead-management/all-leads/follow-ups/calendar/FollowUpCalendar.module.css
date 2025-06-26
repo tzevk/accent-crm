@@ -1,0 +1,261 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.headerActions {
+  display: flex;
+  gap: 12px;
+}
+
+.filterButton,
+.addButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filterButton {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  color: #666;
+}
+
+.filterButton:hover {
+  border-color: var(--crm-purple);
+  color: var(--crm-purple);
+}
+
+.addButton {
+  background: var(--crm-purple);
+  border: none;
+  color: white;
+  text-decoration: none;
+}
+
+.addButton:hover {
+  background: var(--crm-purple-dark);
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+.filterPanel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 8px;
+  margin-bottom: 24px;
+  border: 1px solid #e0e0e0;
+}
+
+.filterGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.filterGroup label {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: #666;
+}
+
+.filterGroup select {
+  padding: 8px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 4px;
+  font-size: 0.95rem;
+  color: #333;
+  background: #fff;
+}
+
+.filterGroup select:focus {
+  outline: none;
+  border-color: var(--crm-purple);
+}
+
+.calendarWrapper {
+  background: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+}
+
+.calendarWrapper :global(.fc) {
+  font-family: inherit;
+}
+
+.calendarWrapper :global(.fc-toolbar-title) {
+  font-size: 1.2rem !important;
+  font-weight: 600;
+}
+
+.calendarWrapper :global(.fc-button-primary) {
+  background: var(--crm-purple) !important;
+  border-color: var(--crm-purple) !important;
+}
+
+.calendarWrapper :global(.fc-button-primary:hover) {
+  background: var(--crm-purple-dark) !important;
+}
+
+.calendarWrapper :global(.fc-event) {
+  cursor: pointer;
+}
+
+.calendarEvent {
+  padding: 4px 6px;
+  font-size: 0.85rem;
+}
+
+.eventTime {
+  font-weight: 500;
+  margin-bottom: 2px;
+}
+
+.eventTitle {
+  margin-bottom: 4px;
+}
+
+.eventMeta {
+  display: flex;
+  gap: 6px;
+  font-size: 0.75rem;
+}
+
+.typecall,
+.typemeeting,
+.typeemail,
+.typesite-visit {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(100,18,109,0.1);
+  color: var(--crm-purple);
+}
+
+.priorityhigh {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(220,53,69,0.1);
+  color: #dc3545;
+}
+
+.prioritymedium {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(253,126,20,0.1);
+  color: #fd7e14;
+}
+
+.prioritylow {
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: rgba(25,135,84,0.1);
+  color: #198754;
+}
+
+.eventModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: #fff;
+  border-radius: 12px;
+  padding: 24px;
+  width: 90%;
+  max-width: 500px;
+}
+
+.modalContent h2 {
+  font-size: 1.4rem;
+  margin: 0 0 20px 0;
+  color: #333;
+}
+
+.modalDetails {
+  display: grid;
+  gap: 12px;
+}
+
+.modalDetail {
+  display: flex;
+  gap: 8px;
+}
+
+.modalDetail strong {
+  color: #666;
+  min-width: 80px;
+}
+
+.modalActions {
+  margin-top: 24px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.modalClose {
+  padding: 8px 16px;
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+}
+
+.modalClose:hover {
+  background: #e9ecef;
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 16px;
+  }
+
+  .headerActions {
+    flex-direction: column;
+  }
+
+  .filterPanel {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .calendarWrapper {
+    padding: 12px;
+  }
+
+  .calendarWrapper :global(.fc-toolbar) {
+    flex-direction: column;
+    gap: 12px;
+  }
+}

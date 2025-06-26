@@ -4,11 +4,6 @@ export default function Header({ onMenuToggle }) {
   return (
     <header className="header">
       <div className="header__left">
-        <button
-          className="header__hamburger"
-          onClick={onMenuToggle}
-          aria-label="Toggle menu"
-        >☰</button>
 
       </div>
       <div className="header__center">

@@ -1,0 +1,141 @@
+.header {
+  margin-bottom: 24px;
+}
+
+.title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #333;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff5f5;
+  color: #dc3545;
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 24px;
+  font-size: 0.95rem;
+}
+
+.form {
+  background: #fff;
+  border-radius: 12px;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.formGroup label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #333;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  padding: 10px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+  transition: all 0.2s ease;
+  background: #fff;
+}
+
+.formGroup input:focus,
+.formGroup select:focus,
+.formGroup textarea:focus {
+  outline: none;
+  border-color: var(--crm-purple);
+  box-shadow: 0 0 0 2px rgba(100,18,109,0.1);
+}
+
+.formGroup textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* Priority Select Styles */
+.priorityhigh {
+  color: #dc3545;
+  border-color: #dc3545 !important;
+}
+
+.prioritymedium {
+  color: #fd7e14;
+  border-color: #fd7e14 !important;
+}
+
+.prioritylow {
+  color: #198754;
+  border-color: #198754 !important;
+}
+
+.actions {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.submitButton {
+  padding: 12px 24px;
+  background-color: var(--crm-purple);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+  background-color: var(--crm-purple-dark);
+}
+
+.submitButton:disabled {
+  background-color: #6c757d;
+  cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .actions {
+    margin-top: 24px;
+  }
+
+  .submitButton {
+    width: 100%;
+  }
+}
+
+/* Date and Time Input Styling */
+.formGroup input[type="date"],
+.formGroup input[type="time"] {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 30px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23666' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  background-size: 16px;
+}

@@ -1,10 +1,49 @@
 /* Root container */
 .dashboard-container {
-    display: flex;
-    min-height: 100vh;
-    background: #f2f2f7;
-  }
-  
+  display: flex;
+  min-height: 100vh;
+  background: #f2f2f7;
+  position: relative;
+}
+
+/* Main content area */
+.main-area {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: padding-left 0.3s ease;
+  padding-left: 260px;
+}
+
+/* Content area */
+.content {
+  flex: 1;
+  padding: 20px;
+}
+
+/* Page content wrapper */
+.page-wrapper {
+  padding: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  min-height: calc(100vh - 100px);
+}
+
+/* Header positioning */
+.dashboard-header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 700;
+  padding: 16px 24px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
 /* Container */
 .sidebar {
   width: 260px;
@@ -12,11 +51,14 @@
   box-shadow: 2px 0 8px rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
-  position: sticky;
+  position: fixed;
   top: 0;
-  align-items: center; 
-  height: 100vh;
+  left: 0;
+  bottom: 0;
+  align-items: center;
   z-index: 800;
+  transition: transform 0.3s ease;
+  overflow-y: auto;
 }
 
 
@@ -395,62 +437,66 @@
 }
 
 /* 3. Responsive tweaks */
-@media (max-width: 768px) {
-  /* Stack sidebar & main vertically */
-  .dashboard-container {
-    flex-direction: column;
-  }
-
-  /* Sidebar becomes overlay */
+@media (max-width: 1024px) {
   .sidebar {
-    position: sticky; 
-    top: 0;
-    left: -260px;
-    height: 100%;
-    width: 240px;
-    z-index: 50;
-    transition: left 0.25s ease;
+    transform: translateX(-100%);
   }
+  
   .sidebar--open {
-    left: 0;
+    transform: translateX(0);
   }
-
-  /* When sidebar is open, main-area is dimmed */
+  
   .main-area {
-    position: relative;
+    padding-left: 0;
   }
-  .main-area::before {
-    content: '';
-    display: none;
-    position: fixed;
-    inset: 0;
-    flex-direction: column;
-    overflow-y: auto;
-    background: rgba(0,0,0,0.3);
-    z-index: 40;
+  
+  .page-wrapper {
+    margin: 0 16px;
+    min-height: calc(100vh - 132px);
   }
-  .sidebar--open + .main-area::before {
-    display: block;
-  }
+}
 
-  /* Header: show hamburger, simplify layout */
-  .header {
+@media (max-width: 768px) {
+  .sidebar {
+    width: 240px;
+  }
+  
+  .page-wrapper {
+    padding: 16px;
+    margin: 0 12px;
+  }
+  
+  .content {
     padding: 12px;
   }
-  .header__hamburger {
-    display: block;
+  
+  .sidebar--open::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 240px;
+    background: rgba(0,0,0,0.5);
+    z-index: 799;
   }
-  .header__center {
-    display: none; /* hide search on small screens (or you can make it a full-width below) */
-  }
+}
 
-  /* Make content padding smaller */
-  .content {
-    padding: 16px;
-  }
+/* Scrollbar styling for sidebar */
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
 
-  /* Cards: single-column stack */
-  .card-grid {
-    grid-template-columns: 1fr;
-  }
+.sidebar::-webkit-scrollbar-thumb {
+  background: rgba(100,18,109,0.2);
+  border-radius: 3px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+  background: rgba(100,18,109,0.4);
+}
+
+/* Prevent body scroll when mobile menu is open */
+.sidebar--open ~ body {
+  overflow: hidden;
 }
